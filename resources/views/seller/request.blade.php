@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2>Seller Request Form</h2>
+            <h2 class="text-primary">Seller Request Form</h2>
             <form action="{{ route('seller.request.create') }}" method="POST">
                 @csrf
                 <input hidden type="text" name="user_id" value="{{ Auth::user()->id }}">
