@@ -14,12 +14,12 @@ class SellerRequestController extends Controller
 
     public function index(){
         $sellerRequests = SellerRequest::all();
-        return view('seller.request',  compact('sellerRequests'));
+        return view('admin.sellerRequest',  compact('sellerRequests'));
     }
 
     public function show($id){
         $sellerRequest = SellerRequest::findOrFail($id);
-        return view('seller.request.show', compact('sellerRequest'));
+        return view('seller.requestDetails', compact('sellerRequest'));
     }
 
     public function create(){
