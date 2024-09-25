@@ -36,6 +36,11 @@ class SellerRequestController extends Controller
         return redirect()->route('welcome')->with('status', 'Request create sucess');
     }
 
+    public function accept($id){
+        
+
+    }
+
     public function destroy($id){
         $sellerRequest = SellerRequest::findOrFail($id);
         $sellerRequest->delete();

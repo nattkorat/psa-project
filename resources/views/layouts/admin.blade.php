@@ -88,7 +88,7 @@
             <hr>
             <ul class="list-unstyled flex-grow-1">
                 <li>
-                    <a href="{{ route('home') }}" class="text-white navbar-brand {{ request()->routeIs('home') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}" class="text-white navbar-brand {{ request()->routeIs('home') ? 'active' : '' }}">
                         <i class="lni lni-dashboard"></i> Dashboard
                     </a>
                 </li>
