@@ -18,7 +18,12 @@ Route::post('/seller/request', [SellerRequestController::class, 'create'])->name
 
 Route::get('/admin/sellers/request/', [SellerRequestController::class, 'index'])->name('admin.seller.request');
 Route::get('/admin/sellers/request/{id}', [SellerRequestController::class, 'show'])->name('admin.seller.request.details');
+
+
+
 Route::get('/admin/users/', [AdminController::class, 'index'])->name('admin.users');
 
-Route::get('/admin/seller/request/accept', [SellerRequestController::class, 'accept'])->name('admin.seller.request.accept');
+Route::get('/admin/seller/request/accept/{id}', [SellerRequestController::class, 'accept'])->name('admin.seller.request.accept');
 Route::get('/admin/seller/request/reject', [SellerRequestController::class, 'reject'])->name('admin.seller.request.reject');
+
+Route::get('/admin/dashboard',  [AdminController::class, 'showDashboard'])->name('admin.dashboard');
