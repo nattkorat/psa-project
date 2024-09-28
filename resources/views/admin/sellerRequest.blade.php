@@ -1,6 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
+    @if (session('accept'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1050;">
+            {{ session('accept') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if (session('reject'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1050;">
+            {{ session('reject') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     @if(count($sellerRequests))
         <h1 class="text-primary">Seller Request List</h1>
         <hr>
@@ -8,9 +20,7 @@
             <thead>
                 <th>#</th>
                 <th>Name</th>
-                <th>Email</th>
                 <th>Store Name</th>
-                <th>Address</th>
                 <th>Request Date</th>
             </thead>
             <tbody>
@@ -18,16 +28,14 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $sellerRequest->name }}</td>
-                        <td>{{ $sellerRequest->email }}</td>
                         <td>{{ $sellerRequest->store }}</td>
-                        <td>{{ $sellerRequest->address }}</td>
                         <td>{{ $sellerRequest->created_at->format('d-m-Y') }}</td>
                         <td>
-                            <a href="{{ route('admin.seller.request.accept', ['id' => $sellerRequest->id]) }}" class="btn btn-primary">
+                            <a href="{{ route('admin.seller.request.accept', $sellerRequest->id ) }}" class="btn btn-primary">
                                 Accept</a>
-                            <a href="{{ route('admin.seller.request.reject', ['id' => $sellerRequest->id]) }}" class="btn btn-danger">
+                            <a href="{{ route('admin.seller.request.reject', $sellerRequest->id) }}" class="btn btn-danger">
                                 Reject</a>
-                            <a href="{{ route('admin.seller.request.details', ['id' => $sellerRequest->id]) }}" class="btn btn-info">
+                            <a href="{{ route('admin.seller.request.details', $sellerRequest->id) }}" class="btn btn-info">
                                 Details</a>
                         </td>
                     </tr>
@@ -35,7 +43,7 @@
             </tbody>
 
     @else
-        <h1 class="text-dange">No Selling Request</h1>
+        <h1 class="text-danger">No Selling Request</h1>
 
     @endif
 @endsection
