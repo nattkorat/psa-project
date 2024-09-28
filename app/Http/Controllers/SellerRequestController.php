@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SellerRequest;
+use App\Models\User;
 
 class SellerRequestController extends Controller
 {
@@ -18,8 +19,9 @@ class SellerRequestController extends Controller
     }
 
     public function show($id){
-        $sellerRequest = SellerRequest::findOrFail($id);
-        return view('seller.requestDetails', compact('sellerRequest'));
+        $user = SellerRequest::findOrFail($id);
+
+        return view('admin.sellerRequestDetails', compact('user'));
     }
 
     public function create(){
@@ -37,8 +39,25 @@ class SellerRequestController extends Controller
     }
 
     public function accept($id){
-        
+        $seller_req = SellerRequest::findOrFail($id);
 
+        $user = User::findOrFail($seller_req->user_id);
+        $user->role = "seller";
+        $user->save();
+
+        // remove request
+        $seller_req->delete();
+
+        return redirect()->route('admin.seller.request')->with('accept', $user->name . ' accepted as seller');
+
+    }
+
+    public function reject($id){
+        $seller_req = SellerRequest::findOrFail($id);
+        // remove request
+        $seller_req->delete();
+
+        return redirect()->route('admin.seller.request')->with('reject', $seller_req->name . ' rejected as seller');
     }
 
     public function destroy($id){

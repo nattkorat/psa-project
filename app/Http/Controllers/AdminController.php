@@ -15,6 +15,11 @@ class AdminController extends Controller
         return view('admin.user', compact('users'));
     }
 
+    public function show($id){
+        $user = User::findOrFail($id);
+        return view('admin.userDetails', compact('user'));
+    }
+
     public function showDashBoard() {
         $users = $this->count_users_by_role();
         $total_product = Product::count();
@@ -47,5 +52,19 @@ class AdminController extends Controller
             "sellers" =>  $n_sellers,
             "users" =>  $n_users
             ];
+    }
+
+    public function updateUser(){
+
+        $userId = request('id');
+        $role = request('role');
+
+        $user = User::findOrFail($userId);
+        $user->role = $role;
+
+        $user->save();
+
+        return redirect()->route('admin.users.details', $userId)->with('status', $user->name . " updated role to ". $user->role . "!");
+
     }
 }

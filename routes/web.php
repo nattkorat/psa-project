@@ -22,8 +22,14 @@ Route::get('/admin/sellers/request/{id}', [SellerRequestController::class, 'show
 
 
 Route::get('/admin/users/', [AdminController::class, 'index'])->name('admin.users');
+Route::post("admin/users/", [AdminController::class, 'updateUser'])->name('admim.user.update');
+Route::get('/admin/users/{id}', [AdminController::class, 'show'])->name('admin.users.details');
 
 Route::get('/admin/seller/request/accept/{id}', [SellerRequestController::class, 'accept'])->name('admin.seller.request.accept');
-Route::get('/admin/seller/request/reject', [SellerRequestController::class, 'reject'])->name('admin.seller.request.reject');
+Route::get('/admin/seller/request/reject/{id}', [SellerRequestController::class, 'reject'])->name('admin.seller.request.reject');
 
 Route::get('/admin/dashboard',  [AdminController::class, 'showDashboard'])->name('admin.dashboard');
+
+Route::middleware('auth')->get('/seller/dashboard', function(){
+    return view('seller.dashboard');
+})->name('seller.dashboard');

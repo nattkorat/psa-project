@@ -88,18 +88,18 @@
             <hr>
             <ul class="list-unstyled flex-grow-1">
                 <li>
-                    <a href="{{ route('admin.dashboard') }}" class="text-white navbar-brand {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    <a href="" class="text-white navbar-brand {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class="lni lni-dashboard"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.users') }}" class="text-white navbar-brand {{ request()->routeIs('admin.users') ? 'active' : '' }}">
-                        <i class="lni lni-users"></i> Users
+                    <a href="" class="text-white navbar-brand {{ request()->routeIs('admin.users') ? 'active' : '' }}">
+                        <i class="lni lni-users"></i> Orders
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.seller.request', ['id' => 1]) }}" class="text-white navbar-brand {{ request()->routeIs('admin.seller.request') ? 'active' : '' }}">
-                        <i class="lni lni-files"></i> Seller Request
+                    <a href="" class="text-white navbar-brand {{ request()->routeIs('admin.seller.request') ? 'active' : '' }}">
+                        <i class="lni lni-files"></i> Manage Product
                     </a>
                 </li>
             </ul>
