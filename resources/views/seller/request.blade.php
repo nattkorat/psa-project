@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Fullname</label>
-                    <input type="text" name="phone" class="form-control" placeholder="+855 172 345 67" required>
+                    <input type="text" name="Phone" class="form-control" placeholder="+855 172 345 67" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
