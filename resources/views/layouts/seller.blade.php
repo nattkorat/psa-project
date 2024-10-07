@@ -88,17 +88,17 @@
             <hr>
             <ul class="list-unstyled flex-grow-1">
                 <li>
-                    <a href="" class="text-white navbar-brand {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    <a href="{{route('seller.dashboard')}}" class="text-white navbar-brand {{ request()->routeIs('seller.dashboard') ? 'active' : '' }}">
                         <i class="lni lni-dashboard"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="" class="text-white navbar-brand {{ request()->routeIs('admin.users') ? 'active' : '' }}">
+                    <a href="{{ route('seller.order') }}" class="text-white navbar-brand {{ request()->routeIs('seller.order') ? 'active' : '' }}">
                         <i class="lni lni-users"></i> Orders
                     </a>
                 </li>
                 <li>
-                    <a href="" class="text-white navbar-brand {{ request()->routeIs('admin.seller.request') ? 'active' : '' }}">
+                    <a href="{{ route('seller.manage') }}" class="text-white navbar-brand {{ request()->routeIs('seller.manage') ? 'active' : '' }}">
                         <i class="lni lni-files"></i> Manage Product
                     </a>
                 </li>

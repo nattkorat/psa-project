@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerRequestController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
+use App\Http\controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,3 +35,9 @@ Route::get('/admin/dashboard',  [AdminController::class, 'showDashboard'])->name
 Route::middleware('auth')->get('/seller/dashboard', function(){
     return view('seller.dashboard');
 })->name('seller.dashboard');
+
+Route::get('/seller/orders/', [OrderController::class, 'index'])->name('seller.order');
+Route::get('/seller/manage/', [ProductController::class, 'index'])->name('seller.manage');
+
+Route::get('/seller/store/', [ProductController::class, 'store'])->name('seller.add_product');
+Route::post('/seller/store/', [ProductController::class, 'add'])->name('products.store');
