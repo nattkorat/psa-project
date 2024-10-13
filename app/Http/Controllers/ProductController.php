@@ -60,4 +60,43 @@ class ProductController extends Controller
         return view('seller.product_detailts', compact('product'));
 
     }
+
+
+    // Method to update the product
+    public function update(Request $request, $id)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        // Find the product by ID
+        $product = Product::findOrFail($id);
+
+        // Update product details
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+
+        // Handle image upload if a new image is uploaded
+        if ($request->hasFile('image')) {
+            // Delete the old image from storage (optional)
+            if ($product->image) {
+                \Storage::delete('public/' . $product->image);
+            }
+
+            // Store the new image
+            $imagePath = $request->file('image')->store('products', 'public');
+            $product->image = $imagePath;
+        }
+
+        // Save the updated product to the database
+        $product->save();
+
+        // Redirect back with success message
+        return redirect()->route('product.details', $id)->with('success', 'Product updated successfully!');
+    }
 }
