@@ -8,14 +8,17 @@ use App\Http\controllers\ProductController;
 use App\Http\controllers\SellerController;
 use App\Http\controllers\UserController;
 
+use App\Models\Product;
+
 Route::get('/', function () {
-    return view('welcome');
+    $products = Product::all();
+    return view('welcome', compact('products'));
 })->name('welcome');
 
 Auth::routes();
 
 Route::get('/cart', [UserController::class,  'cart'])->name('cart');
-Route::get('/shop_detail', [UserController::class,  'cart'])->name('shop_detail');
+Route::get('/shop_detail', [UserController::class,  'shop_detail'])->name('shop_detail');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
