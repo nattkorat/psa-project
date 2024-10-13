@@ -34,6 +34,7 @@
           </span>
       </div>
     </div>
+  </div>
 </div>
 
 <div class="mt-5">
@@ -50,7 +51,18 @@
         </thead>
         <tbody>
             @foreach($product as $product)
-  
+            <tr>
+                        <td>
+                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}" style="width: 100px;">
+                        </td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td>
+                            <a href="{{ route('product.details', $product->id) }}" class="btn btn-info">
+                                Details</a>
+                        </td>
+                    </tr>
             @endforeach
         </tbody>
     </table>
