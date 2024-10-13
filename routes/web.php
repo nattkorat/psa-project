@@ -45,3 +45,7 @@ Route::get('/seller/manage/', [ProductController::class, 'index'])->name('seller
 
 Route::get('/seller/store/', [ProductController::class, 'store'])->name('seller.add_product');
 Route::post('/seller/store/', [ProductController::class, 'add'])->name('products.store');
+
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.details');
+
+Route::put('/seller/products/{id}', [ProductController::class, 'update'])->name('seller.product.update');
