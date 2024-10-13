@@ -6,12 +6,16 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\controllers\ProductController;
 use App\Http\controllers\SellerController;
+use App\Http\controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
 Auth::routes();
+
+Route::get('/cart', [UserController::class,  'cart'])->name('cart');
+Route::get('/shop_detail', [UserController::class,  'cart'])->name('shop_detail');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
