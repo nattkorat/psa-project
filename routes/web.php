@@ -5,6 +5,7 @@ use App\Http\Controllers\SellerRequestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\controllers\ProductController;
+use App\Http\controllers\SellerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,9 +33,8 @@ Route::get('/admin/seller/request/reject/{id}', [SellerRequestController::class,
 
 Route::get('/admin/dashboard',  [AdminController::class, 'showDashboard'])->name('admin.dashboard');
 
-Route::middleware('auth')->get('/seller/dashboard', function(){
-    return view('seller.dashboard');
-})->name('seller.dashboard');
+
+Route::get('/seller/dashboard/', [SellerController::class, 'index'])->name('seller.dashboard');
 
 Route::get('/seller/orders/', [OrderController::class, 'index'])->name('seller.order');
 Route::get('/seller/manage/', [ProductController::class, 'index'])->name('seller.manage');
