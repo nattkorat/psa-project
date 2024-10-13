@@ -22,7 +22,7 @@
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->description }}</td>
                         <td>
-                            <a href="#" class="btn btn-info">
+                            <a href="{{ route('product.details', $product->id) }}" class="btn btn-info">
                                 Details</a>
                         </td>
                     </tr>

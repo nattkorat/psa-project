@@ -53,4 +53,11 @@ class ProductController extends Controller
     public function dashboard(){
         return view('seller.dashboard');
     }
+
+    public function show($id){
+        $product = Product::findOrFail($id);
+
+        return view('seller.product_detailts', compact('product'));
+
+    }
 }
