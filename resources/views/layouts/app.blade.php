@@ -31,6 +31,7 @@
         <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -67,8 +68,9 @@
                             <!-- Cart Icon -->
                             <a href="{{ route('cart') }}" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1">
-                                    <!-- Add cart item count here -->
+                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                      style=" width: 20px; height: 20px; font-size: 12px; top: -5px; right: -10px;">
+                                    1 <!-- Fixed number for cart items -->
                                 </span>
                             </a>
                             <!-- User Dropdown -->

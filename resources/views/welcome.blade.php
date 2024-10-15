@@ -2,6 +2,46 @@
 @php
     use Illuminate\Support\Str;
 @endphp
+<style>
+    .featurs-item {
+        transition: transform 0.3s; /* Smooth hover effect */
+    }
+
+    .featurs-item:hover {
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+
+    .featurs-icon {
+        margin-bottom: 30px; /* Space below the icon */
+        padding: 20px; /* Add some padding to the icon */
+        border-radius: 50%; /* Ensure the icon is circular */
+        color: white; /* Ensure text color is white */
+    }
+
+    .featurs-icon.free-shipping {
+        background-color: #28a745; /* Green for Free Shipping */
+    }
+
+    .featurs-icon.security-payment {
+        background-color: #007bff; /* Blue for Security Payment */
+    }
+
+    .featurs-icon.return {
+        background-color: #ffc107; /* Yellow for 30 Day Return */
+    }
+
+    .featurs-icon.support {
+        background-color: #dc3545; /* Red for 24/7 Support */
+    }
+
+    .featurs-content h5 {
+        color: #333; /* Darker text color for headings */
+    }
+
+    .featurs-content p {
+        color: #666; /* Grey text for paragraphs */
+    }
+</style>
 @section('content')
     <!-- Hero Start -->
     <div class="container-fluid py-3 mb-4 hero-header">
@@ -50,8 +90,8 @@
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="featurs-item text-center rounded bg-light p-4">
-                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                            <i class="fas fa-car-side fa-3x text-white"></i>
+                        <div class="featurs-icon free-shipping btn-square rounded-circle mb-5 mx-auto">
+                            <i class="fas fa-car-side fa-3x"></i>
                         </div>
                         <div class="featurs-content text-center">
                             <h5>Free Shipping</h5>
@@ -61,8 +101,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="featurs-item text-center rounded bg-light p-4">
-                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                            <i class="fas fa-user-shield fa-3x text-white"></i>
+                        <div class="featurs-icon security-payment btn-square rounded-circle mb-5 mx-auto">
+                            <i class="fas fa-user-shield fa-3x"></i>
                         </div>
                         <div class="featurs-content text-center">
                             <h5>Security Payment</h5>
@@ -72,8 +112,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="featurs-item text-center rounded bg-light p-4">
-                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                            <i class="fas fa-exchange-alt fa-3x text-white"></i>
+                        <div class="featurs-icon return btn-square rounded-circle mb-5 mx-auto">
+                            <i class="fas fa-exchange-alt fa-3x"></i>
                         </div>
                         <div class="featurs-content text-center">
                             <h5>30 Day Return</h5>
@@ -83,8 +123,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="featurs-item text-center rounded bg-light p-4">
-                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                            <i class="fa fa-phone-alt fa-3x text-white"></i>
+                        <div class="featurs-icon support btn-square rounded-circle mb-5 mx-auto">
+                            <i class="fa fa-phone-alt fa-3x"></i>
                         </div>
                         <div class="featurs-content text-center">
                             <h5>24/7 Support</h5>
