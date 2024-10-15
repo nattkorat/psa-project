@@ -34,26 +34,30 @@
                                     </td>
                                     <td>
                                         <div class="input-group quantity mt-4" style="width: 100px;">
-                                            <div class="input-group-btn">
+                                            <!-- <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-minus rounded-circle bg-light border">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
-                                            </div>
+                                            </div> -->
                                             <input type="text" class="form-control form-control-sm text-center border-0" value="{{ $bucket->amount }}">
-                                            <div class="input-group-btn">
+                                            <!-- <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </td>
                                     <td>
                                         <p class="mb-0 mt-4">{{number_format($bucket->product->price * $bucket->amount, 2)}} $</p>
                                     </td>
                                     <td>
-                                        <button class="btn btn-md rounded-circle bg-light border mt-4">
-                                            <i class="fa fa-times text-danger"></i>
-                                        </button>
+                                        <form action="{{route('bucket.distroy') }}" method="post">
+                                            @csrf
+                                            <input type="number" name="id" value="{{$bucket->id}}" hidden>
+                                            <button type="submit" class="btn btn-md rounded-circle bg-light border mt-4">
+                                                <i class="fa fa-times text-danger"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

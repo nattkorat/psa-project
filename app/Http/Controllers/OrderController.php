@@ -24,7 +24,7 @@ class OrderController extends Controller
         // Fetch orders for the seller's products
         $orders = Order::whereHas('product', function ($query) use ($seller_id) {
             $query->where('seller_id', $seller_id);
-        })
+        })->where('status', 'pending')
         ->with('user') // Fetch user details for each order
         ->get()
         ->groupBy('user_id'); // Group orders by user
@@ -68,13 +68,28 @@ class OrderController extends Controller
 
         // Fetch all orders placed by the specific user for this seller's products
         $orders = Order::where('user_id', $user_id)
-            ->whereHas('product', function ($query) use ($seller_id) {
-                $query->where('seller_id', $seller_id);
-            })
-            ->with('product') // Fetch product details
-            ->get();
+        ->where('status', 'pending') // Fetch only pending orders
+        ->whereHas('product', function ($query) use ($seller_id) {
+            $query->where('seller_id', $seller_id);
+        })
+        ->with('product') // Fetch product details
+        ->get();
 
         return view('seller.user-orders', compact('orders'));
+    }
+
+    public function confirmAllOrders($user_id)
+    {
+        // Retrieve all pending orders for this user
+        $orders = Order::where('user_id', $user_id)->where('status', 'pending')->get();
+
+        // Confirm all pending orders
+        foreach ($orders as $order) {
+            $order->status = 'proceed';
+            $order->save();
+        }
+
+        return redirect()->route('seller.order')->with('success', 'The order have been confirmed successfully!');
     }
 
 
