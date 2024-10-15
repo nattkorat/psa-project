@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\controllers\ProductController;
 use App\Http\controllers\SellerController;
 use App\Http\controllers\UserController;
+use App\Http\controllers\BucketController;
 
 use App\Models\Product;
 
@@ -18,6 +19,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/cart', [UserController::class,  'cart'])->name('cart');
+Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('cart.placeOrder');
+
+
 Route::get('/shop_detail/{id}', [UserController::class,  'shop_detail'])->name('shop_detail');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -52,3 +56,5 @@ Route::post('/seller/store/', [ProductController::class, 'add'])->name('products
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.details');
 
 Route::put('/seller/products/{id}', [ProductController::class, 'update'])->name('seller.product.update');
+
+Route::post('/add/bucket/', [BucketController::class, 'add'])->name('add.bucket');

@@ -3,6 +3,13 @@
     use Illuminate\Support\Str;
 @endphp
 @section('content')
+@if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1050;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+@endif
+
     <!-- Hero Start -->
     <div class="container-fluid py-3 mb-4 hero-header">
         <div class="container py-5">
