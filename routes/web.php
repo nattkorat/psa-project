@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/cart', [UserController::class,  'cart'])->name('cart');
-Route::get('/shop_detail', [UserController::class,  'shop_detail'])->name('shop_detail');
+Route::get('/shop_detail/{id}', [UserController::class,  'shop_detail'])->name('shop_detail');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

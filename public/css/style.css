@@ -1,3 +1,13 @@
+/* Ensure the navbar is fixed, on top of other elements, and with correct spacing */
+body {
+    padding-top: 70px; /* Adjust this value based on the actual height of your navbar */
+}
+
+.navbar.fixed-top {
+    z-index: 1030; /* Ensure the navbar stays on top of other content */
+    position: fixed; /* Make sure it's fixed at the top */
+    width: 100%; /* Ensure the navbar takes the full width */
+}
 
 /*** Spinner Start ***/
 #spinner {
