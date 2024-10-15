@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container-fluid py-3 mb-4 hero-header mt-5">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <h2 class="text-primary">Seller Request Form</h2>
             <form action="{{ route('seller.request.create') }}" method="POST">
@@ -29,7 +29,10 @@
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mt-2">
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
     </div>
