@@ -20,7 +20,7 @@
         <h5 class="card-title text-center text-primary">Order Request:</h5>
         <hr>
           <span class="text-danger">
-            Pendding Request: 
+            Pendding Request: {{$order_num}}
           </span>
       </div>
     </div>

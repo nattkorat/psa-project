@@ -32,7 +32,13 @@
                                 </button>
                             </div>
                         </div>
-                        <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                        <form action="{{route('add.bucket')}}" method="post">
+                            @csrf
+                            <input type="number" name="product_id" value="{{ $product->id }}" hidden>
+                            <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
+                            <input type="number" name="amount" id="amount_id" value="1" hidden>
+                            <button type="submit" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                        </form>
                     </div>
 
                 </div>
@@ -46,11 +52,13 @@
     const quantityInput = document.getElementById('quantity');
     const increaseBtn = document.getElementById('increase-btn');
     const decreaseBtn = document.getElementById('decrease-btn');
+    const amount = document.getElementById('amount_id');
 
     // Increase quantity on plus button click
     increaseBtn.addEventListener('click', function() {
         let currentValue = parseInt(quantityInput.value); // Get current value
         quantityInput.value = currentValue + 1; // Increase by 1
+        amount.value = quantityInput.value
     });
 
     // Decrease quantity on minus button click, ensuring it doesn't go below 1
@@ -58,6 +66,7 @@
         let currentValue = parseInt(quantityInput.value); // Get current value
         if (currentValue > 1) { // Ensure value doesn't go below 1
             quantityInput.value = currentValue - 1; // Decrease by 1
+            amount.value = quantityInput.value
         }
     });
 </script>
