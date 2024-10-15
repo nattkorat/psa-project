@@ -21,7 +21,7 @@ class SellerController extends Controller
 
         $clientCount = Order::whereHas('product', function ($query) use ($seller_id) {
             $query->where('seller_id', $seller_id);
-        })
+        })->where('status', 'pending')
         ->distinct('user_id')
         ->count('user_id');
 

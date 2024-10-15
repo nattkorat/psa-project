@@ -67,9 +67,12 @@
                             <!-- Cart Icon -->
                             <a href="{{ route('cart') }}" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1">
-                                    <!-- Add cart item count here -->
+                                @if (Auth::check() && request()->routeIs('welcome'))
+                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1 text-white bg-danger"
+                                      style=" width: 20px; height: 20px; font-size: 12px; top: -5px; right: -10px;">
+                                    {{ $cartCount }} <!-- Fixed number for cart items -->
                                 </span>
+                                @endif
                             </a>
                             <!-- User Dropdown -->
                             <div class="dropdown my-auto">
@@ -87,7 +90,7 @@
                                     </div>
                                 @else
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle user-icon" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        <i class="fas fa-user fa-2x"></i> {{ Auth::user()->name }}
+                                        <i class="fas fa-user fa-2x text-primary"></i> {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         @if(Auth::user()->role == 'user')

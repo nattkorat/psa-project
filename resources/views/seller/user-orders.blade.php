@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-primary">Orders for {{ $orders->first()->user->name }}</h2>
+    <h1 class="text-primary">Orders for {{ $orders->first()->user->name }}</h1>
     <hr>
 
     @if($orders->isEmpty())
@@ -30,7 +30,12 @@
                 @endforeach
             </tbody>
         </table>
-        <button class="btn btn-primary">Confirm Order</button>
+
+        <form action="{{ route('seller.orders.confirmAll', $orders->first()->user_id) }}" method="POST">
+            @csrf
+            @method('PATCH')
+            <button type="submit" class="btn btn-primary">Confirm All Orders for {{ $orders->first()->user->name }}</button>
+        </form>
     @endif
 </div>
 @endsection

@@ -23,4 +23,27 @@ class BucketController extends Controller
 
         return redirect()->route('welcome');
     }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'bucket_id' => 'required|exists:buckets,id',
+            'amount' => 'required|integer|min:0', // Ensure amount is a non-negative integer
+        ]);
+
+        // Update the bucket amount
+        $bucket = Bucket::find($request('id'));
+        $bucket->amount = $request('amount');
+        $bucket->save();
+
+        return redirect()->back();
+    }
+
+    public function destroy(){
+        $id = request('id');
+        $item = Bucket::findOrFail($id);
+        $item->delete();
+
+        return redirect()->back();
+    }
 }

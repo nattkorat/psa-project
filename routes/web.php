@@ -10,18 +10,30 @@ use App\Http\controllers\UserController;
 use App\Http\controllers\BucketController;
 
 use App\Models\Product;
+use App\Models\Bucket;
 
 Route::get('/', function () {
     $products = Product::all();
-    return view('welcome', compact('products'));
+    if (Auth::check()) {
+        $user_id = Auth::user()->id;
+        // Fetch the count of items in the user's bucket
+        $cartCount = Bucket::where('user_id', $user_id)->count(); // Assuming 'amount' is the quantity of products
+    }
+    return view('welcome', [
+        "products" => $products,
+        "cartCount" => $cartCount
+    ]);
 })->name('welcome');
 
 Auth::routes();
 
 Route::get('/cart', [UserController::class,  'cart'])->name('cart');
+Route::post('/cart/update', [BucketController::class, 'update'])->name('bucket.update');
+Route::post('/cart/remove', [BucketController::class, 'destroy'])->name('bucket.distroy');
+
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('cart.placeOrder');
 Route::get('/seller/user-orders/{user_id}', [OrderController::class, 'userOrders'])->middleware('auth')->name('seller.userOrders');
-
+Route::patch('/seller/orders/{user_id}/confirm-all', [OrderController::class, 'confirmAllOrders'])->name('seller.orders.confirmAll');
 
 
 Route::get('/shop_detail/{id}', [UserController::class,  'shop_detail'])->name('shop_detail');
