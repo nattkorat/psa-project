@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/cart', [UserController::class,  'cart'])->name('cart');
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('cart.placeOrder');
+Route::get('/seller/user-orders/{user_id}', [OrderController::class, 'userOrders'])->middleware('auth')->name('seller.userOrders');
+
 
 
 Route::get('/shop_detail/{id}', [UserController::class,  'shop_detail'])->name('shop_detail');

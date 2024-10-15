@@ -20,7 +20,15 @@ class OrderController extends Controller
 
     public function index(){
         $seller_id = Auth::user()->id;
-        $orders = Order::where('seller_id', $seller_id)->get();
+
+        // Fetch orders for the seller's products
+        $orders = Order::whereHas('product', function ($query) use ($seller_id) {
+            $query->where('seller_id', $seller_id);
+        })
+        ->with('user') // Fetch user details for each order
+        ->get()
+        ->groupBy('user_id'); // Group orders by user
+
         return view('seller.order', compact('orders'));
 
     }
@@ -52,5 +60,22 @@ class OrderController extends Controller
         // Redirect to a confirmation page or cart page
         return redirect()->route('welcome')->with('success', 'Order placed successfully!');
     }
+
+
+    public function userOrders($user_id)
+    {
+        $seller_id = Auth::user()->id;
+
+        // Fetch all orders placed by the specific user for this seller's products
+        $orders = Order::where('user_id', $user_id)
+            ->whereHas('product', function ($query) use ($seller_id) {
+                $query->where('seller_id', $seller_id);
+            })
+            ->with('product') // Fetch product details
+            ->get();
+
+        return view('seller.user-orders', compact('orders'));
+    }
+
 
 }
