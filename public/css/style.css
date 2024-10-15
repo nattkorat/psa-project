@@ -9,6 +9,7 @@ body {
     width: 100%; /* Ensure the navbar takes the full width */
 }
 
+
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
