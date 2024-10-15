@@ -48,14 +48,14 @@
 }
 
     </style>
-
     <body>
-        <div>
         <!-- Navbar start -->
         <div class="container-fluid fixed-top">
             <div class="container px-0">
-                <nav class="navbar navbar-light  navbar-expand-xl">
-                    <a href="{{route('welcome')}}" class="navbar-brand"><h1 class="text-primary display-6">Psa</h1></a>
+                <nav class="navbar navbar-light navbar-expand-xl">
+                    <a href="{{ route('welcome') }}" class="navbar-brand">
+                        <h1 class="text-primary display-6">Psa</h1>
+                    </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
@@ -68,13 +68,12 @@
                             <a href="{{ route('cart') }}" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1">
-                                    <!-- Add cart item count here, if applicable -->
+                                    <!-- Add cart item count here -->
                                 </span>
                             </a>
                             <!-- User Dropdown -->
                             <div class="dropdown my-auto">
                                 @guest
-                                    <!-- Guest Links (Login/Register) -->
                                     <a href="#" class="user-icon" id="loginDropdown" data-bs-toggle="dropdown">
                                         <i class="fas fa-user fa-2x"></i>
                                     </a>
@@ -87,7 +86,6 @@
                                         @endif
                                     </div>
                                 @else
-                                    <!-- Logged-in User Menu -->
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle user-icon" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         <i class="fas fa-user fa-2x"></i> {{ Auth::user()->name }}
                                     </a>
@@ -109,16 +107,15 @@
                             </div>
                         </div>
                     </div>
-
                 </nav>
             </div>
         </div>
+        
+
         <!-- Navbar End -->
 
             @yield('content')
 
-
-    </div>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
