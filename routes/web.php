@@ -71,5 +71,6 @@ Route::post('/seller/store/', [ProductController::class, 'add'])->name('products
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.details');
 
 Route::put('/seller/products/{id}', [ProductController::class, 'update'])->name('seller.product.update');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.remove');
 
 Route::post('/add/bucket/', [BucketController::class, 'add'])->name('add.bucket');

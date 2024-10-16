@@ -43,11 +43,10 @@
   @if(count($product) > 0)
     <table class="table table-striped">
         <thead>
-            <th>#</th>
+            <th> </th>
             <th>Product Name</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Product Owner</th>
         </thead>
         <tbody>
             @foreach($product as $product)
@@ -58,10 +57,10 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->description }}</td>
-                        <td>
+                        <!-- <td>
                             <a href="{{ route('product.details', $product->id) }}" class="btn btn-info">
                                 Details</a>
-                        </td>
+                        </td> -->
                     </tr>
             @endforeach
         </tbody>

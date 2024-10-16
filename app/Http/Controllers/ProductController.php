@@ -99,4 +99,18 @@ class ProductController extends Controller
         // Redirect back with success message
         return redirect()->route('product.details', $id)->with('success', 'Product updated successfully!');
     }
+
+    public function destroy($id)
+    {
+        // Find the product by its ID
+        $product = Product::findOrFail($id);
+
+        // Optionally, you can perform any additional checks (e.g., user permissions)
+
+        // Delete the product
+        $product->delete();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Product has been deleted successfully.');
+    }
 }
