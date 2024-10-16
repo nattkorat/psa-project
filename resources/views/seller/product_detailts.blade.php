@@ -40,7 +40,7 @@
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
         </div>
         <div class="col-2">
-            <form action="#" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
+            <form action="{{ route('product.remove', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete Product</button>

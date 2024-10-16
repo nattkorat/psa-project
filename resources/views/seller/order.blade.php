@@ -10,7 +10,7 @@
     <h1 class="text-primary">Order List</h1>
     <hr>
     @if(count($orders) <= 0)
-        <h3 class="text-danger text-center">No Product yet!</h3>
+        <h3 class="text-danger text-center">No Order yet!</h3>
     @else
     <table class="table">
             <thead>
