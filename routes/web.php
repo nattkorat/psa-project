@@ -14,6 +14,7 @@ use App\Models\Bucket;
 
 Route::get('/', function () {
     $products = Product::all();
+    $cartCount = 0;
     if (Auth::check()) {
         $user_id = Auth::user()->id;
         // Fetch the count of items in the user's bucket
